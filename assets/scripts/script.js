@@ -1,3 +1,5 @@
+import {toast} from './toast.js';
+
 const emojiElement = document.getElementById("emoji");
 const titleElement = document.getElementById("title");
 const contentElement = document.getElementById("content");
@@ -52,6 +54,10 @@ contentElement.oninput = () => {
 let index = 0;
 
 document.addEventListener("keydown", event => {
+  if (document.activeElement != document.body) {
+    return;
+  }
+
   const left = event.key === "ArrowLeft";
   const right = event.key === "ArrowRight";
 
@@ -76,3 +82,7 @@ function autoResizeTextarea(textarea) {
   textarea.style.height = "auto";
   textarea.style.height = (textarea.scrollHeight) + "px";
 }
+
+toast("Click on a text to edit", 4000)
+toast("Press < or > for more templates", 6000)
+toast("Press f11 and Win + PrtSrn to save", 8000)
